@@ -1,14 +1,25 @@
 import { useState } from 'react';
+import { Operation, OperationType } from './types';
+import { calculateBalance } from './App';
 
-export default function DataTable() {
+interface DataTableProps {
+	data: Operation[];
+	totalBalance: number;
+}
+
+export default function DataTable({ data, totalBalance }: DataTableProps) {
 	const [page, setPage] = useState(1);
-	const data = getData();
 	const ITEMS_PER_PAGE = 5;
 	const PAGES_COUNT = Math.ceil(data.length / ITEMS_PER_PAGE);
 
+	const periodBalance = calculateBalance(data);
+
 	return (
 		<table className='data-table'>
-			<caption>Saldo total: R$ 50 Saldo no periodo: R$ 100</caption>
+			<caption>
+				Saldo total: R$ {totalBalance} | Saldo no periodo: R${' '}
+				{periodBalance}
+			</caption>
 			<thead>
 				<tr>
 					<th>Data</th>
@@ -63,165 +74,4 @@ export default function DataTable() {
 			</tfoot>
 		</table>
 	);
-}
-
-function getData() {
-	return [
-		{
-			date: '01/01/2021',
-			value: 'R$ 100',
-			type: 'Entrada',
-			operatorName: 'João',
-		},
-		{
-			date: '02/01/2021',
-			value: 'R$ 200',
-			type: 'Saída',
-			operatorName: 'Maria',
-		},
-		{
-			date: '03/01/2021',
-			value: 'R$ 150',
-			type: 'Entrada',
-			operatorName: 'Pedro',
-		},
-		{
-			date: '29/01/2021',
-			value: 'R$ 450',
-			type: 'Saída',
-			operatorName: 'Lucas',
-		},
-		{
-			date: '30/01/2021',
-			value: 'R$ 300',
-			type: 'Entrada',
-			operatorName: 'Ana',
-		},
-		{
-			date: '01/01/2021',
-			value: 'R$ 100',
-			type: 'Entrada',
-			operatorName: 'João',
-		},
-		{
-			date: '02/01/2021',
-			value: 'R$ 200',
-			type: 'Saída',
-			operatorName: 'Maria 2',
-		},
-		{
-			date: '03/01/2021',
-			value: 'R$ 150',
-			type: 'Entrada',
-			operatorName: 'Pedro 2',
-		},
-		{
-			date: '29/01/2021',
-			value: 'R$ 450',
-			type: 'Saída',
-			operatorName: 'Lucas 2',
-		},
-		{
-			date: '30/01/2021',
-			value: 'R$ 300',
-			type: 'Entrada',
-			operatorName: 'Ana',
-		},
-		{
-			date: '01/01/2021',
-			value: 'R$ 100',
-			type: 'Entrada',
-			operatorName: 'João',
-		},
-		{
-			date: '02/01/2021',
-			value: 'R$ 200',
-			type: 'Saída',
-			operatorName: 'Maria',
-		},
-		{
-			date: '03/01/2021',
-			value: 'R$ 150',
-			type: 'Entrada',
-			operatorName: 'Pedro',
-		},
-		{
-			date: '29/01/2021',
-			value: 'R$ 450',
-			type: 'Saída',
-			operatorName: 'Lucas',
-		},
-		{
-			date: '30/01/2021',
-			value: 'R$ 300',
-			type: 'Entrada',
-			operatorName: 'Ana',
-		},
-		{
-			date: '01/01/2021',
-			value: 'R$ 100',
-			type: 'Entrada',
-			operatorName: 'João',
-		},
-		{
-			date: '02/01/2021',
-			value: 'R$ 200',
-			type: 'Saída',
-			operatorName: 'Maria',
-		},
-		{
-			date: '03/01/2021',
-			value: 'R$ 150',
-			type: 'Entrada',
-			operatorName: 'Pedro',
-		},
-		{
-			date: '29/01/2021',
-			value: 'R$ 450',
-			type: 'Saída',
-			operatorName: 'Lucas',
-		},
-		{
-			date: '30/01/2021',
-			value: 'R$ 300',
-			type: 'Entrada',
-			operatorName: 'Ana',
-		},
-		{
-			date: '01/01/2021',
-			value: 'R$ 100',
-			type: 'Entrada',
-			operatorName: 'João',
-		},
-		{
-			date: '02/01/2021',
-			value: 'R$ 200',
-			type: 'Saída',
-			operatorName: 'Maria',
-		},
-		{
-			date: '03/01/2021',
-			value: 'R$ 150',
-			type: 'Entrada',
-			operatorName: 'Pedro',
-		},
-		{
-			date: '29/01/2021',
-			value: 'R$ 450',
-			type: 'Saída',
-			operatorName: 'Lucas',
-		},
-		{
-			date: '30/01/2021',
-			value: 'R$ 300',
-			type: 'Entrada',
-			operatorName: 'Ana',
-		},
-		{
-			date: '30/01/2021',
-			value: 'R$ 300',
-			type: 'Entrada',
-			operatorName: 'Ana',
-		},
-	];
 }
