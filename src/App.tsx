@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import SearchParam from './SearchParam';
 import DataTable from './DataTable';
-import { Operation, OperationData, OperationType } from './types';
+import { Operation, OperationData } from './types';
+import { calculateBalance, getType } from './utils';
 
 function App() {
 	const [beginDate, setBeginDate] = useState('');
@@ -81,36 +82,6 @@ function App() {
 }
 
 export default App;
-
-export function calculateBalance(data: Operation[]): number {
-	let totalBalance = 0;
-
-	data.forEach((item) => {
-		if (item.type === OperationType.INCOMING_TRANSFER)
-			totalBalance += item.value;
-		if (item.type === OperationType.OUTGOING_TRANSFER)
-			totalBalance -= item.value;
-		if (item.type === OperationType.DEPOSIT) totalBalance += item.value;
-		if (item.type === OperationType.WITHDRAW) totalBalance -= item.value;
-	});
-
-	return totalBalance;
-}
-
-function getType(type: string): OperationType {
-	switch (type) {
-		case 'Transferencia Entrada':
-			return OperationType.INCOMING_TRANSFER;
-		case 'Transferencia Saida':
-			return OperationType.OUTGOING_TRANSFER;
-		case 'Deposito':
-			return OperationType.DEPOSIT;
-		case 'Saque':
-			return OperationType.WITHDRAW;
-		default:
-			return OperationType.INCOMING_TRANSFER;
-	}
-}
 
 function getData(): OperationData[] {
 	return [

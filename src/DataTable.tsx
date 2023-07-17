@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Operation, OperationType } from './types';
-import { calculateBalance } from './App';
+import { Operation } from './types';
+import { calculateBalance } from './utils';
 
 interface DataTableProps {
 	data: Operation[];
