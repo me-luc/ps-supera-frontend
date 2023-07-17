@@ -8,17 +8,12 @@ export interface Operation {
 export interface OperationData {
 	date: string;
 	value: number;
-	type:
-		| 'Deposito'
-		| 'Saque'
-		| 'Transferencia Entrada'
-		| 'Transferencia Saida';
+	type: 'Deposito' | 'Saque' | 'Transferencia';
 	operatorName: string;
 }
 
 export enum OperationType {
 	DEPOSIT = 'Deposito',
 	WITHDRAW = 'Saque',
-	INCOMING_TRANSFER = 'Transferencia Entrada',
-	OUTGOING_TRANSFER = 'Transferencia Saida',
+	INCOMING_TRANSFER = 'Transferencia',
 }
