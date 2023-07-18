@@ -25,3 +25,8 @@ export function getType(type: string): OperationType {
 			return OperationType.INCOMING_TRANSFER;
 	}
 }
+
+export function formatInputDateToDdMmYyyy(date: string): string {
+	const [yyyy, mm, dd] = date.split('-');
+	return `${dd}/${mm}/${yyyy}`;
+}
