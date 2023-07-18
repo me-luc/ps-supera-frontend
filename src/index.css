@@ -52,11 +52,19 @@ h3 {
 	margin-right: 20px;
 }
 
-.search-items-box input {
-	width: 450px;
+.search-param-box {
+	width: 100%;
+	flex: 1;
+	box-sizing: border-box;
+	padding-right: 20px;
+}
+
+.search-param-box input {
+	width: 100%;
 	height: 50px;
 	border: none;
 	border-radius: 15px;
+	box-sizing: border-box;
 	padding: 0 25px;
 	font-size: 20px;
 }
@@ -66,7 +74,7 @@ h3 {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 }
 
 .search-button {
@@ -90,13 +98,41 @@ h3 {
 
 .data-table {
 	width: 100%;
-	border-collapse: collapse;
+	background-color: #fff;
+	border-radius: 15px;
+	overflow: hidden;
+}
+
+.data-table,
+.data-table td {
+	border: none !important;
+	text-align: center;
 }
 
 .data-table th,
 .data-table td {
-	padding: 8px;
-	border: 1px solid #ccc;
+	padding: 10px 25px;
+}
+
+.data-table tr:nth-child(even) {
+	background-color: #dadada;
+}
+
+.data-table tr:hover:not(.extended-td):not(th):not(tfoot td) {
+	background-color: #c4c4c4;
+}
+
+.data-table th {
+	background-color: #646cff;
+	color: white;
+	font-weight: 600;
+	border-radius: 15px;
+}
+
+.data-table caption {
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 10px;
 }
 
 .extended-td {
