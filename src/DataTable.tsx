@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Operation } from './types';
 import { calculateBalance } from './utils';
+import dayjs from 'dayjs';
 
 interface DataTableProps {
 	data: Operation[];
@@ -13,6 +14,11 @@ export default function DataTable({ data, totalBalance }: DataTableProps) {
 	const PAGES_COUNT = Math.ceil(data.length / ITEMS_PER_PAGE);
 
 	const periodBalance = calculateBalance(data);
+
+	if (data.length === 0)
+		return (
+			<div style={{ textAlign: 'center' }}>Nenhum dado encontrado</div>
+		);
 
 	return (
 		<table className='data-table'>
@@ -35,9 +41,11 @@ export default function DataTable({ data, totalBalance }: DataTableProps) {
 						index >= page * ITEMS_PER_PAGE
 					)
 						return null;
+
+					const date = dayjs(item.transferDate).format('DD/MM/YYYY');
 					return (
 						<tr key={index}>
-							<td>{item.date}</td>
+							<td>{date}</td>
 							<td>{item.value}</td>
 							<td>{item.type}</td>
 							<td>{item.operatorName}</td>
