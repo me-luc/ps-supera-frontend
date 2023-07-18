@@ -1,12 +1,12 @@
 export interface Operation {
-	date: string;
+	transferDate: string;
 	value: number;
 	type: OperationType;
 	operatorName: string;
 }
 
 export interface OperationData {
-	date: string;
+	transferDate: string;
 	value: number;
 	type: 'Deposito' | 'Saque' | 'Transferencia';
 	operatorName: string;
